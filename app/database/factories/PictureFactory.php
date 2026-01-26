@@ -17,7 +17,8 @@ class PictureFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'occasion_id' => 1, // fallback occasion id, these should be filles by default
+            'filename' => "image.png", // fallback filename
         ];
     }
 }

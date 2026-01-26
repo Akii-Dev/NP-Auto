@@ -17,7 +17,11 @@ class MessageFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => fake()->sentence(), // completely random title
+            'name' => fake()->name(), // john or something
+            'email' => fake()->safeEmail(), // safe email means a random valid mail
+            'phone' => fake()->phoneNumber(), // not necessarily a dutch formatted phone number
+            'content' => fake()->paragraph(), // about 3 sentences
         ];
     }
 }
