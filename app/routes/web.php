@@ -8,6 +8,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/index', function () {
+    return view('index');
+});
 // load the login view
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('user.showLoginForm');
 
