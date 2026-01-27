@@ -1,0 +1,22 @@
+[
+	{
+		"title": "APK keuring",
+		"price": "80.00",
+		"description": "Gecertificeerde APK keuring. Geldig voor 2 jaar."
+	},
+	{
+		"title": "Kleine onderhoudsbeurt",
+		"price": "150.00",
+		"description": "Kleine duiken verwijderen. Krasjes schuren."
+	},
+	{
+		"title": "Grote onderhoudsbeurt",
+		"price": "300.00",
+		"description": "Grote deuken verwijderen. Olie verversen."
+	},
+	{
+		"title": "Remmen vervangen",
+		"price": "200.00",
+		"description": "Controle en vervanging van remmen."
+	}
+]

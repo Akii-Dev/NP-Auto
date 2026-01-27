@@ -1,0 +1,23 @@
+[
+	{
+		"title": "Gebruikte wagen",
+		"price": "2999.00",
+		"plate": "Onbekend",
+		"description": "Deze auto heeft betere dagen gezien, nu voor een prikkie.",
+		"mileage": 2521
+	},
+	{
+		"title": "Tweede kans Volvo",
+		"price": "16000.50",
+		"plate": "Onbekend",
+		"description": "Goede outlet deal.",
+		"mileage": 120000
+	},
+	{
+		"title": "Gebruikte Citroën",
+		"price": "1200.00",
+		"plate": "Onbekend",
+		"description": "Roestbak, lekker goedkoop.",
+		"mileage": 85000
+	}
+]
