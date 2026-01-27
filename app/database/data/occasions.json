@@ -19,5 +19,19 @@
 		"plate": "Onbekend",
 		"description": "Roestbak, lekker goedkoop.",
 		"mileage": 85000
+	},
+	{
+		"title": "Audi VK2",
+		"price": "18000.00",
+		"plate": "Onbekend",
+		"description": "Refurbished high end wagen.",
+		"mileage": 67000
+	},
+	{
+		"title": "Skelter",
+		"price": "50.00",
+		"plate": "Onbekend",
+		"description": "Herleef je kinderjaren.",
+		"mileage": 500
 	}
 ]
