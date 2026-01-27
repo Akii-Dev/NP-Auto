@@ -13,7 +13,8 @@ class UserController extends Controller
     {
         // check if user is already logged in
         if (session()->has('user')) {
-            return view('index');
+            return view('admin.index'); // 
+
         }
         return view('login');
     }
@@ -37,6 +38,16 @@ class UserController extends Controller
 
         // redirect to the admin panel
         return redirect()->route('admin.index');
+
+    }
+
+    public function logout()
+    {
+        session()->flush(); // clear all session data.
+        Auth::logout(); // unauthenticate user. blade will know see them as @guest
+        
+        // return view('login'); // this doesn't change the url. Only shows the template.
+        return redirect()->route('user.showLoginForm'); // redirect to login route itself
 
     }
 }

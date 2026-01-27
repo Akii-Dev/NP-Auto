@@ -8,6 +8,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <p>ay</p>
+    <form method="POST" action="{{ route('user.logout') }}">
+                @csrf
+                <button type="submit" class="my-6 underline decoration-[#deb841] hover:text-[#deb841]">Logout</button>
+            </form>
 </body>
 </html>
