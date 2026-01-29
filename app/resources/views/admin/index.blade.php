@@ -11,7 +11,7 @@
 
  {{-- succes message from one of the forms --}}
   @if (session('success'))
-                <div class="bg-green-500">
+                <div class="text-green-500">
                     {{ session('success') }}
                 </div>
             @endif

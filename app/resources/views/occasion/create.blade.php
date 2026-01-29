@@ -22,7 +22,7 @@
             <div class="mb-4">
                 <label for="title" class="block text-sm/6 font-medium text-gray-900">Titel*</label>
                 <div class="mt-2">
-                    <input id="title" type="text" name="title" placeholder="Heb hier geen zin in"
+                    <input id="title" type="text" name="title" placeholder="Gebruikte lease BMW" value="{{ old('title') }}"
                         class="block w-full sm:w-56 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6" />
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <div class="mb-4">
                 <label for="price" class="block text-sm/6 font-medium text-gray-900">Prijs €*</label>
                 <div class="mt-2">
-                    <input id="price" type="number" step=".01" name="price" placeholder="1300.00"
+                    <input id="price" type="number" step=".01" name="price" placeholder="1300.00" value="{{ old('price') }}"
                         class="block w-full sm:w-56 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6" />
                 </div>
             </div>
@@ -38,7 +38,7 @@
             <div class="mb-4">
                 <label for="plate" class="block text-sm/6 font-medium text-gray-900">Kenteken*</label>
                 <div class="mt-2">
-                    <input id="plate" type="text" name="plate" placeholder="XZ993D"
+                    <input id="plate" type="text" name="plate" placeholder="XZ993D" value="{{ old('plate') }}"
                         class="block w-full sm:w-56 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6" />
                 </div>
             </div>
@@ -46,7 +46,7 @@
             <div class="mb-4">
                 <label for="mileage" class="block text-sm/6 font-medium text-gray-900">Kilometerstand*</label>
                 <div class="mt-2">
-                    <input id="mileage" type="number" name="mileage" placeholder="25210"
+                    <input id="mileage" type="number" name="mileage" placeholder="25210" value="{{ old('mileage') }}"
                         class="block w-full sm:w-56 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6" />
                 </div>
             </div>
@@ -57,13 +57,15 @@
                 <label for="description" class="block text-sm/6 font-medium text-gray-900">Beschrijving*</label>
                 <div class="mt-2">
                     <textarea id="description" name="description" rows="4"
-                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"></textarea>
+                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6">
+{{ old('description') }}
+                    </textarea>
                 </div>
             </div>
             
             {{-- errors declared in session --}}
     @if (session('error'))
-        <div class="bg-red-500">
+        <div class="text-red-500">
             {{ session('error') }}
         </div>
     @endif
@@ -71,7 +73,7 @@
     @if ($errors->any())
         <div>
             @foreach ($errors->all() as $error)
-                <p class="bg-red-500">{{ $error }}</p>
+                <p class="text-red-500">{{ $error }}</p>
             @endforeach
         </div>
     @endif
