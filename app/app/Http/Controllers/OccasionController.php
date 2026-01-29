@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 class OccasionController extends Controller
 {
     // Richy's section
-  
-  
-  public function index()
+
+
+    public function index()
     {
         $kentekens = ['XZ993D']; // testen laten kan dynamish of zo
 
@@ -56,9 +56,9 @@ class OccasionController extends Controller
         // dit haalt occasion via route
         return view('occasion.show', compact('occasion'));
     }
-  
-  
-  
+
+
+
     // Aki's section
     // displays the interface to create a new occasion
     public function create()
@@ -93,9 +93,6 @@ class OccasionController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:8192', // any image up to 8MB
         ]);
 
-        // same validation but with optional extra images, infinite
-
-        
 
         // there isn't really a difference between calling the factory or not
         $occasion = Occasion::factory()->create([
@@ -108,23 +105,23 @@ class OccasionController extends Controller
 
         // handle image upload if exists. this will save to root/app/storage/app/public
         if (isset($validatedImage['image'])) {
-        $image = $validatedImage['image'];
-        $randName = bin2hex(random_bytes(4)); // eg. ef5ff86e
-        $extension = $image->getClientOriginalExtension(); // eg. jpg.
-        $filename = date("ydm") . '_' . $randName . '.' . $extension; // eg. 262901_ef5ff86e.jpg 
-        $image->storeAs('public', $filename); // store in laravels storage. this location is gitignored. will not show in github
+            $image = $validatedImage['image'];
+            $randName = bin2hex(random_bytes(4)); // eg. ef5ff86e
+            $extension = $image->getClientOriginalExtension(); // eg. jpg.
+            $filename = date("ydm") . '_' . $randName . '.' . $extension; // eg. 262901_ef5ff86e.jpg 
+            $image->storeAs('public', $filename); // store in laravels storage. this location is gitignored. will not show in github
 
-       
-        Picture::factory()->create([
-            'occasion_id' => $occasion->id,
-            'filename' => $filename,
-        ]); 
+
+            Picture::factory()->create([
+                'occasion_id' => $occasion->id,
+                'filename' => $filename,
+            ]);
         }
-        
-        
 
 
-        
+
+
+
 
         return redirect()->route('admin.index')->with('success', 'Occasion aangemaakt!');
     }
