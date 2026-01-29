@@ -15,6 +15,12 @@
                     {{ session('success') }}
                 </div>
             @endif
+            {{-- errors declared in session --}}
+    @if (session('error'))
+        <div class="text-red-500">
+            {{ session('error') }}
+        </div>
+    @endif
 
     <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow-sm sm:grid sm:grid-cols-2 sm:divide-y-0">
   <div class="group relative rounded-tl-lg rounded-tr-lg border-gray-200 bg-white p-6 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 sm:rounded-tr-none sm:odd:not-nth-last-2:border-b sm:even:border-l sm:even:not-last:border-b">
