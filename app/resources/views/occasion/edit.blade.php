@@ -11,8 +11,6 @@
 
 <body class="bg-yellow-50">
 
-    <p>{{ $occasion }}</p>
-
     <form action="{{ route('occasion.update', $occasion->id) }}" method="POST">
         @csrf
         @method('PUT')

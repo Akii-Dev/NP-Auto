@@ -11,8 +11,6 @@
 
 <body class="bg-yellow-50">
 
-    <p>{{ $service }}</p>
-
     <form action="{{ route('service.update', $service->id) }}" method="POST">
         @csrf
         @method('PUT')
