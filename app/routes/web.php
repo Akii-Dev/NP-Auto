@@ -6,13 +6,12 @@ use App\Http\Controllers\OccasionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MessageController;
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/index', function () {
     return view('index');
 })->name('index');
 
