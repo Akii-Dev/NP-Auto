@@ -42,4 +42,58 @@ class ServiceController extends Controller
 
         return redirect()->route('admin.index')->with('success', 'Service aangemaakt!');
     }
+
+    public function edit($id)
+    {
+        // check if user is authenticated
+        if (!session()->has('user')) {
+            return redirect('/login');
+        }
+        // check if service exists
+        $service = Service::find($id);
+        if (!$service) {
+            return redirect()->route('admin.index')->with('error', 'Service bestaat niet!');
+        }
+        return view('service.edit', ['service' => $service]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        // check if user is authenticated
+        if (!session()->has('user')) {
+            return redirect('/login');
+        }
+        // check if service exists
+        $service = Service::find($id);
+        if (!$service) {
+            return redirect()->route('admin.index')->with('error', 'Service bestaat niet!');
+        }
+
+        $validated = $request->validate([
+            'title' => 'required|string|unique:services,title',
+            'price' => 'required|numeric|max:999.99', // services cannot cost more than 999.99
+            'description' => 'required|string|max:500',
+        ]);
+
+        $service->update($validated); // we can mass assign as these names correspond with fillable in the model
+
+        return redirect()->route('admin.index')->with('success', 'Service bijgewerkt!');
+    }
+
+    public function destroy($id)
+    {
+        // check if user is authenticated
+        if (!session()->has('user')) {
+            return redirect('/login');
+        }
+        // check if service exists
+        $service = Service::find($id);
+        if (!$service) {
+            return redirect()->route('admin.index')->with('error', 'Service bestaat niet!');
+        }
+
+        $service->delete(); // use the eloquent delete method. no need for manual queries
+
+        return redirect()->route('admin.index')->with('success', 'Service verwijderd!');
+    }
 }
