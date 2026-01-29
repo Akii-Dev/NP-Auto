@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <x-navbar />
     <!--
   This example requires updating your template:
 
