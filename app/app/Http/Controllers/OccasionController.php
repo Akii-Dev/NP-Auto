@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class OccasionController extends Controller
 {
+    // displays the interface to create a new occasion
     public function create()
     {
         // check if user is authenticated
@@ -18,6 +19,7 @@ class OccasionController extends Controller
         return view('occasion.create');
     }
 
+    // stores the new occasion in the database
     public function store(Request $request)
     {
         // check if user is authenticated
@@ -45,4 +47,15 @@ class OccasionController extends Controller
         return redirect()->route('admin.index')->with('success', 'Occasion aangemaakt!');
 
     }
+
+    public function edit($id)
+    {
+        $occasion = Occasion::find($id);
+        if (!$occasion) {
+            return redirect()->route('admin.index')->with('error', 'Occasion bestaat niet!');
+        }
+        return view('occasion.edit', ['occasion' => $occasion]);
+    }
+
+    
 }
