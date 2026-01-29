@@ -22,6 +22,8 @@ class OccasionFactory extends Factory
             'plate' => fake()->unique()->word(), // this is until we find a way to generate actual dutch license plates. dont api call these
             'description' => fake()->paragraph(), // about 3 sentences
             'mileage' => fake()->numberBetween(0, 1000000), // milly km
+            'sold' => fake()->boolean(20), // 20% kans dat auto verkocht is om te testen
+            'visible' => true, // standaard zichtbaar
         ];
     }
 }

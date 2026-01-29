@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OccasionController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OccasionController;
@@ -37,3 +38,5 @@ Route::resource('message', MessageController::class);
 Route::get('/contact', [MessageController::class, 'index'])->name('contact.index');
 Route::post('/contact', [MessageController::class, 'store'])->name('contact.store');
 
+Route::get('/occasions', [OccasionController::class, 'index'])->name('occasions.index');
+Route::get('/occasions/{occasion}', [OccasionController::class, 'show'])->name('occasions.show');

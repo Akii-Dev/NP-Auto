@@ -16,6 +16,8 @@ class Occasion extends Model
         'plate',
         'description',
         'mileage',
+        'sold',
+        'visible',
     ];
 
     // declares the zero-to-many relationship with Picture

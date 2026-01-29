@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('description');
             $table->integer('mileage');
             $table->timestamps();
+            $table->boolean('sold')->default(false);  // nieuw: voor "VERKOCHT" banner
+            $table->boolean('visible')->default(true); // nieuw: voor zichtbaar/verborgen
         });
     }
 
