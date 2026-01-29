@@ -14,7 +14,7 @@ class OccasionController extends Controller
         if (!session()->has('user')) {
             return redirect('/login');
         }
-        
+
 
         return view('occasion.create');
     }
@@ -45,11 +45,15 @@ class OccasionController extends Controller
         ]);
 
         return redirect()->route('admin.index')->with('success', 'Occasion aangemaakt!');
-
     }
 
     public function edit($id)
     {
+        // check if user is authenticated
+        if (!session()->has('user')) {
+            return redirect('/login');
+        }
+        // check if occasion exists
         $occasion = Occasion::find($id);
         if (!$occasion) {
             return redirect()->route('admin.index')->with('error', 'Occasion bestaat niet!');
@@ -57,5 +61,28 @@ class OccasionController extends Controller
         return view('occasion.edit', ['occasion' => $occasion]);
     }
 
-    
+    public function update(Request $request, $id)
+    {
+        // check if user is authenticated
+        if (!session()->has('user')) {
+            return redirect('/login');
+        }
+        // check if occasion exists
+        $occasion = Occasion::find($id);
+        if (!$occasion) {
+            return redirect()->route('admin.index')->with('error', 'Occasion bestaat niet!');
+        }
+
+        $validated = $request->validate([
+            'title' => 'required|string|unique:occasions,title,' . $occasion->id,
+            'price' => 'required|numeric|max:20000',
+            'plate' => 'required|string',
+            'mileage' => 'required|numeric|max:2147483647',
+            'description' => 'required|string|max:500',
+        ]);
+
+        $occasion->update($validated); // we can mass assign as these names correspond with fillable in the model
+
+        return redirect()->route('admin.index')->with('success', 'Occasion bijgewerkt!');
+    }
 }

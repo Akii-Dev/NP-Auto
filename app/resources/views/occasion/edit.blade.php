@@ -15,6 +15,7 @@
 
     <form action="{{ route('occasion.update', $occasion->id) }}" method="POST">
         @csrf
+        @method('PUT')
 
         <div class="flex flex-col py-4 px-8 m-16 border border-yellow-300 rounded-lg bg-white shadow-sm">
 
