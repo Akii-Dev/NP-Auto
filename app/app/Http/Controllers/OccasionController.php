@@ -36,7 +36,7 @@ class OccasionController extends Controller
         ]);
 
         // there isn't really a difference between calling the factory or not
-        $booking = Occasion::factory()->create([
+        $occasion = Occasion::factory()->create([
             'title' => $validated['title'],
             'price' => $validated['price'],
             'plate' => $validated['plate'],
