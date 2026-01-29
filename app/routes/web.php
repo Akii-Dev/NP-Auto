@@ -3,7 +3,6 @@
 use App\Http\Controllers\OccasionController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\OccasionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
