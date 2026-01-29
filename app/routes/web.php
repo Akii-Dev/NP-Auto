@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OccasionController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,5 @@ Route::get('/panel', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/contact', [MessageController::class, 'index'])->name('contact.index');
 Route::post('/contact', [MessageController::class, 'store'])->name('contact.store');
 
+Route::get('/occasions', [OccasionController::class, 'index'])->name('occasions.index');
+Route::get('/occasions/{occasion}', [OccasionController::class, 'show'])->name('occasions.show');
