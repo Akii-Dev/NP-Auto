@@ -70,7 +70,7 @@ class ServiceController extends Controller
         }
 
         $validated = $request->validate([
-            'title' => 'required|string|unique:services,title',
+            'title' => 'required|string|unique:services,title,' . $service->id,
             'price' => 'required|numeric|max:999.99', // services cannot cost more than 999.99
             'description' => 'required|string|max:500',
         ]);
