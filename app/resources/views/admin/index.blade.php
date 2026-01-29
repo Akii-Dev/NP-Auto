@@ -31,7 +31,7 @@
     </div>
     <div class="mt-8">
       <h3 class="text-base font-semibold text-gray-900">
-        <a href="#" class="focus:outline-hidden">
+        <a href="{{ route('occasion.create') }}" class="focus:outline-hidden">
           <!-- Extend touch target to entire panel -->
           <span aria-hidden="true" class="absolute inset-0"></span>
           Create new occasion
@@ -53,7 +53,7 @@
     </div>
     <div class="mt-8">
       <h3 class="text-base font-semibold text-gray-900">
-        <a href="#" class="focus:outline-hidden">
+        <a href="{{ route('occasion.edit', 1) }}" class="focus:outline-hidden">
           <!-- Extend touch target to entire panel -->
           <span aria-hidden="true" class="absolute inset-0"></span>
           Edit existing occasions
@@ -75,7 +75,7 @@
     </div>
     <div class="mt-8">
       <h3 class="text-base font-semibold text-gray-900">
-        <a href="#" class="focus:outline-hidden">
+        <a href="{{ route('service.create') }}" class="focus:outline-hidden">
           <!-- Extend touch target to entire panel -->
           <span aria-hidden="true" class="absolute inset-0"></span>
           Create new service
@@ -97,7 +97,7 @@
     </div>
     <div class="mt-8">
       <h3 class="text-base font-semibold text-gray-900">
-        <a href="#" class="focus:outline-hidden">
+        <a href="{{ route('service.edit', 1) }}" class="focus:outline-hidden">
           <!-- Extend touch target to entire panel -->
           <span aria-hidden="true" class="absolute inset-0"></span>
           Edit existing services
@@ -141,11 +141,12 @@
     </div>
     <div class="mt-8">
       <h3 class="text-base font-semibold text-gray-900">
-        <a href="#" class="focus:outline-hidden">
           <!-- Extend touch target to entire panel -->
-          <span aria-hidden="true" class="absolute inset-0"></span>
-          Log out
-        </a>
+        
+        <form method="POST" action="{{ route('user.logout') }}">
+          @csrf
+          <button type="submit" class="text-red-600 underline">Log out</button>
+        </form>
       </h3>
       <p class="mt-2 text-sm text-gray-500">Vaarwel</p>
     </div>
@@ -157,10 +158,5 @@
   </div>
 </div>
 
-    
-    <form method="POST" action="{{ route('user.logout') }}">
-                @csrf
-                <button type="submit" class="my-6 underline decoration-[#deb841] hover:text-[#deb841]">Logout</button>
-            </form>
 </body>
 </html>
