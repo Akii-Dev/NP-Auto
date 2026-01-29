@@ -85,4 +85,21 @@ class OccasionController extends Controller
 
         return redirect()->route('admin.index')->with('success', 'Occasion bijgewerkt!');
     }
+
+    public function destroy($id)
+    {
+        // check if user is authenticated
+        if (!session()->has('user')) {
+            return redirect('/login');
+        }
+        // check if occasion exists
+        $occasion = Occasion::find($id);
+        if (!$occasion) {
+            return redirect()->route('admin.index')->with('error', 'Occasion bestaat niet!');
+        }
+
+        $occasion->delete(); // use the eloquent delete method. no need for manual queries
+
+        return redirect()->route('admin.index')->with('success', 'Occasion verwijderd!');
+    }
 }
