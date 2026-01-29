@@ -34,7 +34,7 @@
         <a href="{{ route('occasion.create') }}" class="focus:outline-hidden">
           <!-- Extend touch target to entire panel -->
           <span aria-hidden="true" class="absolute inset-0"></span>
-          Create new occasion
+          Maak nieuwe occasion aan
         </a>
       </h3>
       <p class="mt-2 text-sm text-gray-500">Maak een nieuwe occasion met behulp van een invulformulier</p>
@@ -56,7 +56,7 @@
         <a href="{{ route('occasion.edit', 1) }}" class="focus:outline-hidden">
           <!-- Extend touch target to entire panel -->
           <span aria-hidden="true" class="absolute inset-0"></span>
-          Edit existing occasions
+          Pas occasions aan
         </a>
       </h3>
       <p class="mt-2 text-sm text-gray-500">Selecteer een occasion en gebruik een formulier om deze te bewerken</p>
@@ -78,7 +78,7 @@
         <a href="{{ route('service.create') }}" class="focus:outline-hidden">
           <!-- Extend touch target to entire panel -->
           <span aria-hidden="true" class="absolute inset-0"></span>
-          Create new service
+          Maak nieuwe service aan
         </a>
       </h3>
       <p class="mt-2 text-sm text-gray-500">Maak een nieuwe service met behulp van een invulformulier</p>
@@ -100,7 +100,7 @@
         <a href="{{ route('service.edit', 1) }}" class="focus:outline-hidden">
           <!-- Extend touch target to entire panel -->
           <span aria-hidden="true" class="absolute inset-0"></span>
-          Edit existing services
+          Pas services aan
         </a>
       </h3>
       <p class="mt-2 text-sm text-gray-500">Selecteer een service en gebruik een formulier om deze te bewerken</p>
@@ -122,7 +122,7 @@
         <a href="#" class="focus:outline-hidden">
           <!-- Extend touch target to entire panel -->
           <span aria-hidden="true" class="absolute inset-0"></span>
-          Change homepage description
+          Verander homepage text
         </a>
       </h3>
       <p class="mt-2 text-sm text-gray-500">Pas de text aan die je ziet op de homepage</p>
@@ -145,7 +145,7 @@
         
         <form method="POST" action="{{ route('user.logout') }}">
           @csrf
-          <button type="submit" class="text-red-600 underline">Log out</button>
+          <button type="submit" class="text-red-600 underline">Uitloggen</button>
         </form>
       </h3>
       <p class="mt-2 text-sm text-gray-500">Vaarwel</p>
