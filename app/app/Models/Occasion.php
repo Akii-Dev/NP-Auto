@@ -18,6 +18,7 @@ class Occasion extends Model
         'mileage',
         'sold',
         'visible',
+        'brand',
     ];
 
     // declares the zero-to-many relationship with Picture
