@@ -24,7 +24,7 @@
                     <a href="/service-onderhoud" class="text-white hover:text-[#E8C700]">Dienst en onderhoud</a>
                     <a href="{{ route('index') }}" class="text-white hover:text-[#E8C700]">Home</a>
                 </nav>
-                <p class="mt-10 text-white text-sm/6">&copy; 2024 Your Company, Inc. All rights reserved.</p>
+                <p class="mt-10 text-white text-sm/6">&copy; 2026 NP-Auto Inc. All rights reserved.</p>
             </div>
         </div>
     </footer>
