@@ -96,4 +96,17 @@ class ServiceController extends Controller
 
         return redirect()->route('admin.index')->with('success', 'Service verwijderd!');
     }
+
+     public function adminServices()
+    {
+
+        // check if user is authenticated
+        if (!session()->has('user')) {
+            return redirect('/login');
+        }
+        
+        $services = Service::all();
+        return view('admin.services', compact('services'));
+
+    }
 }

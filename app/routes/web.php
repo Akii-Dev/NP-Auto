@@ -28,6 +28,8 @@ Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
 // adminController routes
 Route::get('/panel', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/panel/occasions', [OccasionController::class, 'adminOccasions'])->name('admin.occasions');
+Route::get('/panel/services', [ServiceController::class, 'adminServices'])->name('admin.services');
+Route::get('/panel/messages', [MessageController::class, 'adminMessages'])->name('admin.messages');
 
 // CRUD resource controllers.
 // the create url would be stored such as: /occasion/create same goes for everything else
