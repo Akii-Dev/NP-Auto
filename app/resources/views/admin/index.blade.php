@@ -53,7 +53,8 @@
     </div>
     <div class="mt-8">
       <h3 class="text-base font-semibold text-gray-900">
-        <a href="{{ route('occasion.edit', 1) }}" class="focus:outline-hidden">
+        {{-- <a href="{{ route('occasion.edit', 1) }}" class="focus:outline-hidden"> --}}
+          <a href="{{ route('admin.occasions') }}" class="focus:outline-hidden">
           <!-- Extend touch target to entire panel -->
           <span aria-hidden="true" class="absolute inset-0"></span>
           Pas occasions aan

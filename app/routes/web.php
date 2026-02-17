@@ -25,8 +25,9 @@ Route::post('/login', [UserController::class, 'login'])->name('user.login');
 Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
 
 
-// Only route for adminController
+// adminController routes
 Route::get('/panel', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/panel/occasions', [OccasionController::class, 'adminOccasions'])->name('admin.occasions');
 
 // CRUD resource controllers.
 // the create url would be stored such as: /occasion/create same goes for everything else
