@@ -214,19 +214,6 @@ class OccasionController extends Controller
         return redirect()->route('admin.index')->with('success', 'Occasion verwijderd!');
     }
 
-    // additional index to show all occasions in the admin panel
-    public function adminOccasions()
-    {
 
-    // dd('adminOccasions'); // this is just to check if the route works. remove this later
-        // check if user is authenticated
-        if (!session()->has('user')) {
-            return redirect('/login');
-        }
-        
-        $occasions = Occasion::all();
-        return view('admin.occasions', compact('occasions'));
-
-    }
 
 }

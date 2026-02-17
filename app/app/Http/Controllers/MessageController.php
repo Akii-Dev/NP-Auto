@@ -39,17 +39,6 @@ class MessageController extends Controller
         return back()->with('success', 'Uw bericht is verzonden. We nemen zo snel mogelijk contact op.');
     }
 
-    // Admin panel message overview
-    public function adminMessages()
-    {
 
-        // check if user is authenticated
-        if (!session()->has('user')) {
-            return redirect('/login');
-        }
-        
-        $messages = Message::all();
-        return view('admin.messages', compact('messages'));
-
-    }
+    
 }
