@@ -15,25 +15,26 @@ class OccasionController extends Controller
     // Richy's section
 
 
-    public function index()
+  public function index()
     {
-        $kentekens = ['XZ993D']; // testen laten kan dynamish of zo
+        // 🔹 RDW test fetch (optioneel, alleen voor testen)
+        $kentekens = ['XZ993D'];
 
         foreach ($kentekens as $kenteken) {
-            // check of auto al in database staat
             $occasion = Occasion::where('plate', $kenteken)->first();
 
-            if (!$occasion) {
-                // haal data uit RDW API
-                $response = Http::get('https://opendata.rdw.nl/resource/m9d7-ebf2.json', [
-                    'kenteken' => $kenteken
-                ]);
+            // haal data uit RDW API
+            $response = Http::get('https://opendata.rdw.nl/resource/m9d7-ebf2.json', [
+                'kenteken' => $kenteken
+            ]);
 
-                if ($response->successful() && !empty($response->json())) {
-                    $data = $response->json()[0];
+            if ($response->successful() && !empty($response->json())) {
+                $data = $response->json()[0];
 
+                if (!$occasion) {
                     Occasion::create([
                         'title' => $data['handelsbenaming'] ?? 'Onbekend',
+                        'brand' => $data['merk'] ?? 'Onbekend',
                         'plate' => $kenteken,
                         'price' => $data['catalogusprijs'] ?? 0,
                         'description' => 'Auto van NP Auto',
@@ -41,19 +42,49 @@ class OccasionController extends Controller
                         'sold' => false,
                         'visible' => true,
                     ]);
+                } else {
+                    $occasion->update([
+                        'brand' => $data['merk'] ?? $occasion->brand,
+                    ]);
                 }
             }
         }
 
-        // haal alle occasions uit de database op
-        $occasions = Occasion::all();
+        // 🔹 Filter systeem
+        $query = Occasion::query();
 
-        return view('occasion.index', compact('occasions'));
+        if ($maxKm = request('max_km')) {
+            $query->where('mileage', '<=', $maxKm);
+        }
+
+        if ($maxPrice = request('max_price')) {
+            $query->where('price', '<=', $maxPrice);
+        }
+
+        if ($brand = request('brand')) {
+            $query->where('brand', $brand);
+        }
+
+        if (request('hide_sold')) {
+            $query->where('sold', false);
+        }
+
+        $query->where('visible', true);
+
+        // 🔹 Paginering van 12 per pagina
+        $occasions = $query->paginate(12)->withQueryString();
+
+        $brands = Occasion::whereNotNull('brand')
+            ->where('visible', true)
+            ->distinct()
+            ->orderBy('brand')
+            ->pluck('brand');
+
+        return view('occasion.index', compact('occasions', 'brands'));
     }
 
     public function show(Occasion $occasion)
     {
-        // dit haalt occasion via route
         return view('occasion.show', compact('occasion'));
     }
 
@@ -182,4 +213,5 @@ class OccasionController extends Controller
 
         return redirect()->route('admin.index')->with('success', 'Occasion verwijderd!');
     }
+
 }

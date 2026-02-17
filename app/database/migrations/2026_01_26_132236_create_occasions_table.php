@@ -21,6 +21,8 @@ return new class extends Migration
             $table->timestamps();
             $table->boolean('sold')->default(false);  // nieuw: voor "VERKOCHT" banner
             $table->boolean('visible')->default(true); // nieuw: voor zichtbaar/verborgen
+            $table->string('brand')->nullable(); // merk van de auto
+
         });
     }
 
