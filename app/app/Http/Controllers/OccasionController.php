@@ -88,9 +88,10 @@ class OccasionController extends Controller
             'description' => 'required|string|max:500',
         ]);
 
-        // separate validation as image has its own model
+        // validate multiple images (optional)
         $validatedImage = $request->validate([
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:8192', // any image up to 8MB
+            'images' => 'nullable|array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:8192', // any image up to 8MB each
         ]);
 
 
@@ -103,19 +104,19 @@ class OccasionController extends Controller
             'description' => $validated['description'],
         ]);
 
-        // handle image upload if exists. this will save to root/app/storage/app/public
-        if (isset($validatedImage['image'])) {
-            $image = $validatedImage['image'];
-            $randName = bin2hex(random_bytes(4)); // eg. ef5ff86e
-            $extension = $image->getClientOriginalExtension(); // eg. jpg.
-            $filename = date("ydm") . '_' . $randName . '.' . $extension; // eg. 262901_ef5ff86e.jpg 
-            $image->storeAs('public', $filename); // store in laravels storage. this location is gitignored. will not show in github
+        // handle multiple image uploads if validated images exist
+        if (!empty($validatedImage['images'])) {
+            foreach ($validatedImage['images'] as $image) {
+                $randName = bin2hex(random_bytes(4)); // eg. ef5ff86e
+                $extension = $image->getClientOriginalExtension(); // eg. jpg.
+                $filename = date("ydm") . '_' . $randName . '.' . $extension; // eg. 262901_ef5ff86e.jpg 
+                $image->storeAs('public', $filename); // store in laravels storage. this is gitignored
 
-
-            Picture::factory()->create([
-                'occasion_id' => $occasion->id,
-                'filename' => $filename,
-            ]);
+                Picture::factory()->create([
+                    'occasion_id' => $occasion->id,
+                    'filename' => $filename,
+                ]);
+            }
         }
 
 
@@ -156,7 +157,7 @@ class OccasionController extends Controller
             'title' => 'required|string|unique:occasions,title,' . $occasion->id,
             'price' => 'required|numeric|max:20000',
             'plate' => 'required|string',
-            'mileage' => 'required|numeric|max:2147483647',
+            'mileage' => 'required|numeric|max:2147483647', // can also be 99999. counters don't go over that. 2.1b is the int limit
             'description' => 'required|string|max:500',
         ]);
 

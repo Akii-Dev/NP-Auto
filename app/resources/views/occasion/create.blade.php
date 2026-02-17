@@ -68,9 +68,9 @@
 {{-- image section --}}
 
             
-<label for="image">Voeg foto's toe</label>
+<label for="images">Voeg foto's toe</label>
 
-<input type="file" id="image" name="image" accept="image/*" />
+<input type="file" id="images" name="images[]" accept="image/*" multiple /> 
 
 
 
