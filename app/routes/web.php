@@ -6,6 +6,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Service;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -39,3 +40,15 @@ Route::post('/contact', [MessageController::class, 'store'])->name('contact.stor
 
 Route::get('/occasions', [OccasionController::class, 'index'])->name('occasions.index');
 Route::get('/occasions/{occasion}', [OccasionController::class, 'show'])->name('occasions.show');
+
+// Alle services overzicht
+Route::get('/service-onderhoud', function () {
+    return view('services'); // services.blade.php
+});
+
+
+// Detailpagina per service
+Route::get('/services/{service}', function ($service) {
+    $service = Service::where('title', str_replace('-', ' ', $service))->firstOrFail();
+    return view('service-detail', ['service' => $service]);
+});
