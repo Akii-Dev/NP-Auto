@@ -214,4 +214,6 @@ class OccasionController extends Controller
         return redirect()->route('admin.index')->with('success', 'Occasion verwijderd!');
     }
 
+
+
 }

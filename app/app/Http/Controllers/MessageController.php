@@ -38,4 +38,7 @@ class MessageController extends Controller
         // Terug naar de pagina + succesmelding
         return back()->with('success', 'Uw bericht is verzonden. We nemen zo snel mogelijk contact op.');
     }
+
+
+    
 }
